@@ -6,7 +6,7 @@ from typing import List, Optional
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
-
+from service import fetch_finviz_data
 # Inicializar la aplicación
 app = FastAPI()
 
@@ -48,16 +48,31 @@ def add_row(row: RowData):
     dataframe = pd.concat([dataframe, new_row], ignore_index=True)
     return {"message": "Fila añadida exitosamente", "Symbol": row.Symbol}
 
-# Operación READ: Leer todas las filas o una específica
 @app.get("/get_rows/")
 def get_rows(Symbol: Optional[str] = None):
     global dataframe
+
     if Symbol is not None:
+        # Buscar datos en el DataFrame global
         row = dataframe[dataframe["Symbol"] == Symbol]
         if row.empty:
             raise HTTPException(status_code=404, detail="Fila no encontrada")
-        return row.to_dict(orient="records")
-    return dataframe.to_dict(orient="records")
+
+        # Obtener datos de Finviz para el símbolo
+        try:
+            finviz_data = fetch_finviz_data(Symbol)
+            
+            # Reemplazar valores nulos con cadenas vacías antes de devolverlos
+            return {
+                "symbol_data": row.fillna("").to_dict(orient="records"),
+                "finviz_data": finviz_data.fillna("").to_dict(orient="records"),
+            }
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Error al obtener datos de Finviz: {str(e)}")
+
+    # Si no se proporciona un símbolo, devolver todo el DataFrame global con valores nulos reemplazados
+    return dataframe.fillna("").to_dict(orient="records")
+
 
 # Operación UPDATE: Actualizar una fila existente
 @app.put("/update_row/")

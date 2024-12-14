@@ -108,6 +108,7 @@
         .decimal-hover:hover span {
             display: block;
         }
+
         /* Estilo del modal */
         #modal {
             position: fixed;
@@ -147,27 +148,26 @@
         #modal-content h4 {
             margin-bottom: 20px;
         }
-
     </style>
     <script>
         let originalData = []; // Guardar el orden original de los datos
         let currentSortColumn = null; // Columna actual seleccionada para orden
         let currentSortDirection = 0; // 0 = sin ordenar, 1 = ascendente, -1 = descendente
-
+    
         // Función para interpolar colores más saturados
         function getColorForValue(value) {
             const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
-
+    
             // Limitar valor al rango de -100 a 100
             const clampedValue = clamp(value, -100, 100);
-
+    
             let r, g, b;
-
+    
             if (clampedValue === 0) {
                 // En el punto neutro: color naranja
                 return 'rgb(235, 133, 0)';
             }
-
+    
             if (clampedValue > 0) {
                 // Valores positivos: de naranja (219, 235, 0) a verde puro (0, 255, 0)
                 const normalized = clampedValue / 100; // Normaliza rango [0, 100] a [0, 1]
@@ -181,34 +181,36 @@
                 g = Math.round(133 - (133 * normalized)); // G decrece de 133 a 0
                 b = 0; // Azul constante
             }
-
+    
             return `rgb(${r},${g},${b})`;
         }
-
+    
+        // Ordenar tabla por columna
         function sortTable(data, column, direction) {
             return data.sort((a, b) => {
                 const aValue = parseFloat(a[column]) || 0;
                 const bValue = parseFloat(b[column]) || 0;
-
+    
                 if (direction === 1) return aValue - bValue; // Orden ascendente
                 if (direction === -1) return bValue - aValue; // Orden descendente
                 return 0; // Sin ordenar
             });
         }
-
+    
+        // Actualizar la tabla con los datos
         function updateTable(data) {
             const table = document.getElementById('data-table');
             table.innerHTML = '';
-
+    
             if (data.length > 0) {
                 const headers = Object.keys(data[0]);
-
+    
                 // Crear encabezados de la tabla
                 const headerRow = document.createElement('tr');
                 headers.forEach(header => {
                     const th = document.createElement('th');
                     th.innerHTML = `${header} <span class="sort-indicator"></span>`;
-
+    
                     // Añadir funcionalidad de orden al hacer clic
                     th.onclick = () => {
                         if (currentSortColumn === header) {
@@ -218,30 +220,30 @@
                             currentSortColumn = header;
                             currentSortDirection = -1; // Empezar con descendente
                         }
-
+    
                         const sortedData = currentSortDirection === 0
                             ? [...originalData] // Restaurar orden original
                             : sortTable([...data], header, currentSortDirection);
-
+    
                         updateTable(sortedData);
                     };
-
+    
                     // Actualizar triángulos según el estado de orden
                     if (currentSortColumn === header) {
                         const indicator = th.querySelector(".sort-indicator");
                         indicator.innerHTML = currentSortDirection === 1 ? "&#9650;" : currentSortDirection === -1 ? "&#9660;" : "";
                     }
-
+    
                     headerRow.appendChild(th);
                 });
                 table.appendChild(headerRow);
-
+    
                 // Crear filas de la tabla
                 data.forEach(row => {
                     const tr = document.createElement('tr');
                     headers.forEach(header => {
                         const td = document.createElement('td');
-
+    
                         if (header === "Symbol") {
                             // Crear enlace para Symbol
                             const symbol = row[header];
@@ -252,7 +254,7 @@
                                 td.innerHTML = `<span class="tag tag-gray">ND</span>`;
                             } else {
                                 const roundedValue = expectedReturn.toFixed(2);
-
+    
                                 // Asignar color dinámico
                                 const color = getColorForValue(roundedValue);
                                 td.innerHTML = `<span class="tag" style="background-color: ${color}">${roundedValue}%</span>`;
@@ -278,22 +280,36 @@
                 table.appendChild(emptyRow);
             }
         }
-
+    
+        // Agregar eventos de doble clic para mostrar el modal
         function addDoubleClickEvents() {
             const table = document.getElementById('data-table');
             table.addEventListener('dblclick', async (event) => {
                 const cell = event.target;
                 const row = cell.parentElement;
                 const symbolCell = row.querySelector('td:nth-child(1)'); // Suponemos que la primera columna es "Symbol"
-
+    
                 if (symbolCell) {
                     const symbol = symbolCell.textContent.trim();
-                    const rowData = await fetchRowData(symbol);
-                    showModal(rowData);
+    
+                    // Mostrar modal con mensaje de carga
+                    showModal(null, true);
+    
+                    try {
+                        // Hacer la solicitud a la API
+                        const rowData = await fetchRowData(symbol);
+    
+                        // Actualizar modal con los datos obtenidos
+                        showModal(rowData, false);
+                    } catch (error) {
+                        console.error("Error fetching row data:", error);
+                        // Mostrar modal con mensaje de error
+                        showModal(null, false);
+                    }
                 }
             });
         }
-
+    
         async function fetchRowData(symbol) {
             try {
                 const response = await fetch(`/get_rows?Symbol=${symbol}`);
@@ -307,18 +323,32 @@
                 return null;
             }
         }
-
-        function showModal(data) {
+    
+        function showModal(data = null, loading = true) {
             const modal = document.getElementById('modal');
             const modalContent = document.getElementById('modal-content');
-
-            if (data) {
+    
+            if (loading) {
                 modalContent.innerHTML = `
                     <button type="button" class="close btn" aria-label="Close">
                         <i class="bi bi-x-circle"></i>
                     </button>
-                    <h4>Symbol: ${data[0].Symbol}</h4>
-                    <pre>${JSON.stringify(data[0], null, 2)}</pre>
+                    <h4>Loading data...</h4>
+                `;
+            } else if (data) {
+                const symbolData = data.symbol_data?.[0] || {};
+                const finvizData = data.finviz_data || [];
+    
+                modalContent.innerHTML = `
+                    <button type="button" class="close btn" aria-label="Close">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                    <h4>Symbol: ${symbolData.Symbol || "ND"}</h4>
+                    <pre>${JSON.stringify(symbolData, null, 2)}</pre>
+                    <h4>Finviz Data</h4>
+                    ${finvizData.length > 0
+                        ? `<ul>${finvizData.map(row => `<li>${JSON.stringify(row)}</li>`).join('')}</ul>`
+                        : `<p>No finviz data available.</p>`}
                 `;
             } else {
                 modalContent.innerHTML = `
@@ -326,48 +356,42 @@
                         <i class="bi bi-x-circle"></i>
                     </button>
                     <h4>Error</h4>
-                    <p>The symbol information could not be loaded, it may not exist</p>
+                    <p>The symbol information could not be loaded, it may not exist.</p>
                 `;
             }
-
-            // Mostrar el modal
+    
             modal.style.display = 'flex';
-
-            // Agregar eventos para cerrar el modal
+    
             const closeButton = modalContent.querySelector('.close');
             closeButton.onclick = () => (modal.style.display = 'none');
-
-            // Cerrar modal al hacer clic fuera de él
+    
             modal.onclick = (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
                 }
             };
         }
-        
-
-
+    
         async function loadTable() {
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('data-container').style.display = 'none';
-
+    
             try {
                 const response = await fetch('/get_full_dataframe/');
                 const data = await response.json();
-
-                // Calcular y añadir Expected Return al dataset
+    
                 data.forEach(row => {
                     const targetPrice = row["TargetPrice"] === '' ? "ND" : parseFloat(row["TargetPrice"]);
                     const currentPrice = parseFloat(row["CurrentPrice"]) || 0;
-
+    
                     if (targetPrice === "ND" || currentPrice === 0) {
                         row["Expected Return"] = "ND";
                     } else {
                         row["Expected Return"] = ((targetPrice - currentPrice) / currentPrice) * 100;
                     }
                 });
-
-                originalData = [...data]; // Guardar los datos originales
+    
+                originalData = [...data];
                 updateTable(data);
                 addDoubleClickEvents();
             } catch (error) {
@@ -377,9 +401,10 @@
                 document.getElementById('data-container').style.display = 'block';
             }
         }
-
+    
         window.onload = loadTable;
     </script>
+    
 </head>
 
 <body>

@@ -19,8 +19,20 @@ app.add_middleware(
     allow_headers=["*"],  # Permite cualquier encabezado
 )
 
-# Cargar el DataFrame inicial desde el JSON
-dataframe = pd.read_json("dataroma_data.json")
+# Intentar cargar el DataFrame inicial desde el JSON
+try:
+    dataframe = pd.read_json("dataroma_data.json")
+except (ValueError, FileNotFoundError) as e:
+    print(f"Error loading JSON file: {e}. Initializing with default data.")
+    # Inicializar con un valor predeterminado
+    dataframe = pd.DataFrame([{
+        "Symbol": "MSFT",
+        "Ownershipcount": "32",
+        "CurrentPrice": 447.27,
+        "TargetPrice": 506.56625,
+        "5 Year EPS Growth": 0.104,
+        "Earnings Yield": 0.02695969392294688
+    }])
 
 # Modelo para la creación de filas
 class RowData(BaseModel):

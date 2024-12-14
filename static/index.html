@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataframe Viewer</title>
+    <link icon="favicon.ico" rel="icon" type="static\favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        table thead {
+            background-color: #444;
+            color: #fff;
+        }
+
+        table tr {
+            border-bottom: 1px solid #555;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #333;
+        }
+
+        table tr:hover {
+            background-color: #555;
+        }
+
+        table th {
+            border-bottom: 2px solid #555;
+        }
+
+        #loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        #data-container {
+            display: none;
+        }
+
+        /* Estilo de enlaces para Symbol */
+        .symbol-link {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .symbol-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo de las etiquetas */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+        }
+
+        .tag-gray {
+            background-color: #6c757d;
+        }
+
+        /* Mostrar decimales completos al hacer hover */
+        .decimal-hover {
+            position: relative;
+        }
+
+        .decimal-hover span {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .decimal-hover:hover span {
+            display: block;
+        }
+        /* Estilo del modal */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        #modal-content {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            color: #fff;
+            position: relative;
+        }
+
+        #modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #modal-content .close:hover {
+            color: #ccc;
+        }
+
+        #modal-content h4 {
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script>
+        let originalData = []; // Guardar el orden original de los datos
+        let currentSortColumn = null; // Columna actual seleccionada para orden
+        let currentSortDirection = 0; // 0 = sin ordenar, 1 = ascendente, -1 = descendente
+
+        // Función para interpolar colores más saturados
+        function getColorForValue(value) {
+            const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+            // Limitar valor al rango de -100 a 100
+            const clampedValue = clamp(value, -100, 100);
+
+            let r, g, b;
+
+            if (clampedValue === 0) {
+                // En el punto neutro: color naranja
+                return 'rgb(235, 133, 0)';
+            }
+
+            if (clampedValue > 0) {
+                // Valores positivos: de naranja (219, 235, 0) a verde puro (0, 255, 0)
+                const normalized = clampedValue / 100; // Normaliza rango [0, 100] a [0, 1]
+                r = Math.round(196 - (219 * normalized)); // R decrece de 219 a 0
+                g = Math.round(235 + (20 * normalized)); // G incrementa de 235 a 255
+                b = 0; // Azul constante
+            } else {
+                // Valores negativos: de naranja (235, 133, 0) a rojo puro (255, 0, 0)
+                const normalized = Math.abs(clampedValue) / 100; // Normaliza rango [-100, 0] a [0, 1]
+                r = Math.round(235 + (20 * normalized)); // R incrementa de 235 a 255
+                g = Math.round(133 - (133 * normalized)); // G decrece de 133 a 0
+                b = 0; // Azul constante
+            }
+
+            return `rgb(${r},${g},${b})`;
+        }
+
+        function sortTable(data, column, direction) {
+            return data.sort((a, b) => {
+                const aValue = parseFloat(a[column]) || 0;
+                const bValue = parseFloat(b[column]) || 0;
+
+                if (direction === 1) return aValue - bValue; // Orden ascendente
+                if (direction === -1) return bValue - aValue; // Orden descendente
+                return 0; // Sin ordenar
+            });
+        }
+
+        function updateTable(data) {
+            const table = document.getElementById('data-table');
+            table.innerHTML = '';
+
+            if (data.length > 0) {
+                const headers = Object.keys(data[0]);
+
+                // Crear encabezados de la tabla
+                const headerRow = document.createElement('tr');
+                headers.forEach(header => {
+                    const th = document.createElement('th');
+                    th.innerHTML = `${header} <span class="sort-indicator"></span>`;
+
+                    // Añadir funcionalidad de orden al hacer clic
+                    th.onclick = () => {
+                        if (currentSortColumn === header) {
+                            // Ciclar entre sin ordenar, ascendente, descendente
+                            currentSortDirection = (currentSortDirection + 2) % 3 - 1; // 0 -> 1 -> -1 -> 0
+                        } else {
+                            currentSortColumn = header;
+                            currentSortDirection = -1; // Empezar con descendente
+                        }
+
+                        const sortedData = currentSortDirection === 0
+                            ? [...originalData] // Restaurar orden original
+                            : sortTable([...data], header, currentSortDirection);
+
+                        updateTable(sortedData);
+                    };
+
+                    // Actualizar triángulos según el estado de orden
+                    if (currentSortColumn === header) {
+                        const indicator = th.querySelector(".sort-indicator");
+                        indicator.innerHTML = currentSortDirection === 1 ? "&#9650;" : currentSortDirection === -1 ? "&#9660;" : "";
+                    }
+
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
+
+                // Crear filas de la tabla
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    headers.forEach(header => {
+                        const td = document.createElement('td');
+
+                        if (header === "Symbol") {
+                            // Crear enlace para Symbol
+                            const symbol = row[header];
+                            td.innerHTML = `<a href="https://es.tradingview.com/symbols/${symbol}/" target="_blank" class="symbol-link">${symbol}</a>`;
+                        } else if (header === "Expected Return") {
+                            const expectedReturn = row[header];
+                            if (expectedReturn === "ND") {
+                                td.innerHTML = `<span class="tag tag-gray">ND</span>`;
+                            } else {
+                                const roundedValue = expectedReturn.toFixed(2);
+
+                                // Asignar color dinámico
+                                const color = getColorForValue(roundedValue);
+                                td.innerHTML = `<span class="tag" style="background-color: ${color}">${roundedValue}%</span>`;
+                            }
+                        } else if (!isNaN(row[header])) {
+                            // Mostrar número redondeado y todos los decimales al hacer hover
+                            const originalValue = parseFloat(row[header]);
+                            const roundedValue = originalValue.toFixed(2);
+                            td.innerHTML = `<span class="decimal-hover">${roundedValue}<span>${originalValue}</span></span>`;
+                        } else {
+                            td.textContent = row[header] === '' ? 'ND' : row[header];
+                        }
+                        tr.appendChild(td);
+                    });
+                    table.appendChild(tr);
+                });
+            } else {
+                const emptyRow = document.createElement('tr');
+                const td = document.createElement('td');
+                td.colSpan = "100%";
+                td.textContent = "No data available";
+                emptyRow.appendChild(td);
+                table.appendChild(emptyRow);
+            }
+        }
+
+        function addDoubleClickEvents() {
+            const table = document.getElementById('data-table');
+            table.addEventListener('dblclick', async (event) => {
+                const cell = event.target;
+                const row = cell.parentElement;
+                const symbolCell = row.querySelector('td:nth-child(1)'); // Suponemos que la primera columna es "Symbol"
+
+                if (symbolCell) {
+                    const symbol = symbolCell.textContent.trim();
+                    const rowData = await fetchRowData(symbol);
+                    showModal(rowData);
+                }
+            });
+        }
+
+        async function fetchRowData(symbol) {
+            try {
+                const response = await fetch(`/get_rows?Symbol=${symbol}`);
+                if (!response.ok) {
+                    throw new Error("Error fetching data");
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Error fetching row data:", error);
+                return null;
+            }
+        }
+
+        function showModal(data) {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+
+            if (data) {
+                modalContent.innerHTML = `
+                    <button type="button" class="close btn" aria-label="Close">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                    <h4>Symbol: ${data[0].Symbol}</h4>
+                    <pre>${JSON.stringify(data[0], null, 2)}</pre>
+                `;
+            } else {
+                modalContent.innerHTML = `
+                    <button type="button" class="close btn" aria-label="Close">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                    <h4>Error</h4>
+                    <p>The symbol information could not be loaded, it may not exist</p>
+                `;
+            }
+
+            // Mostrar el modal
+            modal.style.display = 'flex';
+
+            // Agregar eventos para cerrar el modal
+            const closeButton = modalContent.querySelector('.close');
+            closeButton.onclick = () => (modal.style.display = 'none');
+
+            // Cerrar modal al hacer clic fuera de él
+            modal.onclick = (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
+        
+
+
+        async function loadTable() {
+            document.getElementById('loader').style.display = 'flex';
+            document.getElementById('data-container').style.display = 'none';
+
+            try {
+                const response = await fetch('/get_full_dataframe/');
+                const data = await response.json();
+
+                // Calcular y añadir Expected Return al dataset
+                data.forEach(row => {
+                    const targetPrice = row["TargetPrice"] === '' ? "ND" : parseFloat(row["TargetPrice"]);
+                    const currentPrice = parseFloat(row["CurrentPrice"]) || 0;
+
+                    if (targetPrice === "ND" || currentPrice === 0) {
+                        row["Expected Return"] = "ND";
+                    } else {
+                        row["Expected Return"] = ((targetPrice - currentPrice) / currentPrice) * 100;
+                    }
+                });
+
+                originalData = [...data]; // Guardar los datos originales
+                updateTable(data);
+                addDoubleClickEvents();
+            } catch (error) {
+                console.error("Error loading data:", error);
+            } finally {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('data-container').style.display = 'block';
+            }
+        }
+
+        window.onload = loadTable;
+    </script>
+</head>
+
+<body>
+    <div id="loader">Loading data...</div>
+    <div id="modal">
+        <div id="modal-content"></div>
+    </div>
+    <div class="container p-3" id="data-container">
+        <table id="data-table"></table>
+    </div>
+</body>
+
+</html>

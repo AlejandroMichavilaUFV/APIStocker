@@ -1,0 +1,6 @@
+uvicorn
+fastapi
+pandas
+beautifulsoup4
+requests
+yfinance

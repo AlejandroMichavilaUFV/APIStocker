@@ -6,7 +6,7 @@ from typing import List, Optional
 import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
-from service import fetch_finviz_data
+from service import fetch_finviz_data, get_dataroma_data
 # Inicializar la aplicación
 app = FastAPI()
 
@@ -30,6 +30,25 @@ class RowData(BaseModel):
     TargetPrice: Optional[float] = None
     EPSGrowth5Year: Optional[float] = None
     EarningsYield: Optional[float] = None
+
+
+@app.post("/update_dataroma/")
+def update_dataroma_data(n_pags: int = 4):
+    """
+    Endpoint para actualizar los datos desde Dataroma, guardarlos y cargarlos en el DataFrame.
+    """
+    global dataframe
+    try:
+        # Llamar a la función `get_dataroma_data` para obtener los datos
+        updated_data = get_dataroma_data(n_pags=n_pags)
+
+        # Cargar los datos actualizados en el DataFrame global
+        dataframe = pd.DataFrame(updated_data)
+
+        return {"status": "success", "message": "Datos actualizados correctamente desde Dataroma"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al actualizar datos desde Dataroma: {str(e)}")
+
 
 # Endpoint para cargar un dataframe desde un JSON inicial
 @app.post("/load_dataframe/")

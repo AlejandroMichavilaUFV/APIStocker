@@ -3,6 +3,9 @@ from typing import Optional
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+import warnings
+# Desactivar warnings innecesarios
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 # Función para obtener datos de Finviz
 def fetch_finviz_data(symbol: str) -> pd.DataFrame:

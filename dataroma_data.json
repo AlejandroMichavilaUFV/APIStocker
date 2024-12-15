@@ -1,0 +1,802 @@
+[
+    {
+        "Symbol": "MSFT",
+        "Ownershipcount": "32",
+        "CurrentPrice": 447.27,
+        "TargetPrice": 506.56625,
+        "5 Year EPS Growth": 0.104,
+        "Earnings Yield": 0.02695969392294688
+    },
+    {
+        "Symbol": "BRK.A",
+        "Ownershipcount": "14",
+        "CurrentPrice": 685934.0,
+        "TargetPrice": "",
+        "5 Year EPS Growth": "",
+        "Earnings Yield": ""
+    },
+    {
+        "Symbol": "AMZN",
+        "Ownershipcount": "25",
+        "CurrentPrice": 227.46,
+        "TargetPrice": 236.29219,
+        "5 Year EPS Growth": 0.521,
+        "Earnings Yield": 0.02048303271170896
+    },
+    {
+        "Symbol": "GOOG",
+        "Ownershipcount": "26",
+        "CurrentPrice": 191.38,
+        "TargetPrice": 206.69412,
+        "5 Year EPS Growth": 0.366,
+        "Earnings Yield": 0.03894024686257295
+    },
+    {
+        "Symbol": "META",
+        "Ownershipcount": "22",
+        "CurrentPrice": 620.35,
+        "TargetPrice": 649.3341,
+        "5 Year EPS Growth": 0.374,
+        "Earnings Yield": 0.03364035574438402
+    },
+    {
+        "Symbol": "GOOGL",
+        "Ownershipcount": "31",
+        "CurrentPrice": 189.82,
+        "TargetPrice": 209.84563,
+        "5 Year EPS Growth": 0.366,
+        "Earnings Yield": 0.039279016461762864
+    },
+    {
+        "Symbol": "BRK.B",
+        "Ownershipcount": "19",
+        "CurrentPrice": 457.9,
+        "TargetPrice": "",
+        "5 Year EPS Growth": "",
+        "Earnings Yield": ""
+    },
+    {
+        "Symbol": "CVNA",
+        "Ownershipcount": "3",
+        "CurrentPrice": 248.25,
+        "TargetPrice": 248.806,
+        "5 Year EPS Growth": -0.822,
+        "Earnings Yield": -8.072002260160632e-05
+    },
+    {
+        "Symbol": "V",
+        "Ownershipcount": "25",
+        "CurrentPrice": 314.74,
+        "TargetPrice": 325.00342,
+        "5 Year EPS Growth": 0.169,
+        "Earnings Yield": 0.03096458008465137
+    },
+    {
+        "Symbol": "JOE",
+        "Ownershipcount": "1",
+        "CurrentPrice": 46.64,
+        "TargetPrice": "",
+        "5 Year EPS Growth": -0.125,
+        "Earnings Yield": 0.02484076433121019
+    },
+    {
+        "Symbol": "MA",
+        "Ownershipcount": "16",
+        "CurrentPrice": 529.0,
+        "TargetPrice": 560.7209,
+        "5 Year EPS Growth": 0.041,
+        "Earnings Yield": 0.0248492702992055
+    },
+    {
+        "Symbol": "AAPL",
+        "Ownershipcount": "20",
+        "CurrentPrice": 248.13,
+        "TargetPrice": 245.78214,
+        "5 Year EPS Growth": -0.341,
+        "Earnings Yield": 0.024520083884497498
+    },
+    {
+        "Symbol": "MCO",
+        "Ownershipcount": "15",
+        "CurrentPrice": 489.02,
+        "TargetPrice": 500.0642,
+        "5 Year EPS Growth": 0.389,
+        "Earnings Yield": 0.02213283744997372
+    },
+    {
+        "Symbol": "BAC",
+        "Ownershipcount": "14",
+        "CurrentPrice": 45.67,
+        "TargetPrice": 49.12524,
+        "5 Year EPS Growth": -0.1,
+        "Earnings Yield": 0.05989583333333333
+    },
+    {
+        "Symbol": "TDG",
+        "Ownershipcount": "3",
+        "CurrentPrice": 1259.12,
+        "TargetPrice": 1501.2009,
+        "5 Year EPS Growth": -0.2,
+        "Earnings Yield": 0.020604262728533194
+    },
+    {
+        "Symbol": "IEP",
+        "Ownershipcount": "1",
+        "CurrentPrice": 10.1,
+        "TargetPrice": 15.0,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.10117878192534381
+    },
+    {
+        "Symbol": "LAD",
+        "Ownershipcount": "6",
+        "CurrentPrice": 380.57,
+        "TargetPrice": 395.06668,
+        "5 Year EPS Growth": -0.175,
+        "Earnings Yield": 0.0770444386011044
+    },
+    {
+        "Symbol": "FICO",
+        "Ownershipcount": "4",
+        "CurrentPrice": 2168.89,
+        "TargetPrice": 2150.0312,
+        "5 Year EPS Growth": 0.353,
+        "Earnings Yield": 0.009306592664268892
+    },
+    {
+        "Symbol": "DIS",
+        "Ownershipcount": "13",
+        "CurrentPrice": 113.34,
+        "TargetPrice": 122.12857,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": 0.023672758920800698
+    },
+    {
+        "Symbol": "GE",
+        "Ownershipcount": "6",
+        "CurrentPrice": 166.01,
+        "TargetPrice": 210.71294,
+        "5 Year EPS Growth": 6.064,
+        "Earnings Yield": 0.030698295213250012
+    },
+    {
+        "Symbol": "BN",
+        "Ownershipcount": "6",
+        "CurrentPrice": 58.68,
+        "TargetPrice": 62.625,
+        "5 Year EPS Growth": -0.975,
+        "Earnings Yield": 0.007763713080168776
+    },
+    {
+        "Symbol": "CHTR",
+        "Ownershipcount": "12",
+        "CurrentPrice": 379.78,
+        "TargetPrice": 405.44333,
+        "5 Year EPS Growth": 0.069,
+        "Earnings Yield": 0.08212125112627107
+    },
+    {
+        "Symbol": "BABA",
+        "Ownershipcount": "7",
+        "CurrentPrice": 87.82,
+        "TargetPrice": 119.83762,
+        "5 Year EPS Growth": -0.257,
+        "Earnings Yield": 0.05424184691247338
+    },
+    {
+        "Symbol": "AMR",
+        "Ownershipcount": "2",
+        "CurrentPrice": 228.71,
+        "TargetPrice": 332.0,
+        "5 Year EPS Growth": -0.956,
+        "Earnings Yield": 0.11770293609671849
+    },
+    {
+        "Symbol": "LOAR",
+        "Ownershipcount": "1",
+        "CurrentPrice": 79.14,
+        "TargetPrice": 97.0,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": 0.002521432173474534
+    },
+    {
+        "Symbol": "OXY",
+        "Ownershipcount": "5",
+        "CurrentPrice": 47.64,
+        "TargetPrice": 62.66185,
+        "5 Year EPS Growth": -0.18,
+        "Earnings Yield": 0.0757418551566715
+    },
+    {
+        "Symbol": "CRM",
+        "Ownershipcount": "11",
+        "CurrentPrice": 354.31,
+        "TargetPrice": 395.32578,
+        "5 Year EPS Growth": 0.148,
+        "Earnings Yield": 0.016925955925481104
+    },
+    {
+        "Symbol": "SPGI",
+        "Ownershipcount": "10",
+        "CurrentPrice": 505.75,
+        "TargetPrice": 579.9605,
+        "5 Year EPS Growth": 0.335,
+        "Earnings Yield": 0.022091368182970344
+    },
+    {
+        "Symbol": "UNH",
+        "Ownershipcount": "16",
+        "CurrentPrice": 520.48,
+        "TargetPrice": 636.20074,
+        "5 Year EPS Growth": 0.043,
+        "Earnings Yield": 0.02976190476190476
+    },
+    {
+        "Symbol": "C",
+        "Ownershipcount": "7",
+        "CurrentPrice": 71.01,
+        "TargetPrice": 80.24789,
+        "5 Year EPS Growth": -0.074,
+        "Earnings Yield": 0.0491390172196556
+    },
+    {
+        "Symbol": "INTU",
+        "Ownershipcount": "9",
+        "CurrentPrice": 656.45,
+        "TargetPrice": 724.6283,
+        "5 Year EPS Growth": -0.185,
+        "Earnings Yield": 0.015336556340647081
+    },
+    {
+        "Symbol": "AXP",
+        "Ownershipcount": "11",
+        "CurrentPrice": 302.14,
+        "TargetPrice": 285.6974,
+        "5 Year EPS Growth": 0.058,
+        "Earnings Yield": 0.04528804528804529
+    },
+    {
+        "Symbol": "CEIX",
+        "Ownershipcount": "3",
+        "CurrentPrice": 116.48,
+        "TargetPrice": 127.33333,
+        "5 Year EPS Growth": 0.035,
+        "Earnings Yield": 0.11464158617183529
+    },
+    {
+        "Symbol": "IBKR",
+        "Ownershipcount": "4",
+        "CurrentPrice": 179.49,
+        "TargetPrice": 192.0,
+        "5 Year EPS Growth": 0.071,
+        "Earnings Yield": 0.03566080638899673
+    },
+    {
+        "Symbol": "PYPL",
+        "Ownershipcount": "9",
+        "CurrentPrice": 91.02,
+        "TargetPrice": 92.0727,
+        "5 Year EPS Growth": 0.065,
+        "Earnings Yield": 0.046756152125279636
+    },
+    {
+        "Symbol": "PGR",
+        "Ownershipcount": "6",
+        "CurrentPrice": 251.8,
+        "TargetPrice": 276.1875,
+        "5 Year EPS Growth": 1.101,
+        "Earnings Yield": 0.056640303180095566
+    },
+    {
+        "Symbol": "TSM",
+        "Ownershipcount": "12",
+        "CurrentPrice": 200.99,
+        "TargetPrice": 229.96333,
+        "5 Year EPS Growth": 0.541,
+        "Earnings Yield": 0.032539433824297505
+    },
+    {
+        "Symbol": "COF",
+        "Ownershipcount": "11",
+        "CurrentPrice": 184.53,
+        "TargetPrice": 186.56223,
+        "5 Year EPS Growth": -0.009,
+        "Earnings Yield": 0.05732070365358593
+    },
+    {
+        "Symbol": "WFC",
+        "Ownershipcount": "15",
+        "CurrentPrice": 70.44,
+        "TargetPrice": 74.36,
+        "5 Year EPS Growth": -0.041,
+        "Earnings Yield": 0.06793785310734463
+    },
+    {
+        "Symbol": "LEN",
+        "Ownershipcount": "4",
+        "CurrentPrice": 154.39,
+        "TargetPrice": 194.875,
+        "5 Year EPS Growth": 0.101,
+        "Earnings Yield": 0.09680324178298065
+    },
+    {
+        "Symbol": "GRBK",
+        "Ownershipcount": "2",
+        "CurrentPrice": 64.22,
+        "TargetPrice": 74.0,
+        "5 Year EPS Growth": 0.269,
+        "Earnings Yield": 0.11736946262749277
+    },
+    {
+        "Symbol": "CP",
+        "Ownershipcount": "7",
+        "CurrentPrice": 74.37,
+        "TargetPrice": 87.63662,
+        "5 Year EPS Growth": 0.071,
+        "Earnings Yield": 0.03562818108759711
+    },
+    {
+        "Symbol": "ELV",
+        "Ownershipcount": "6",
+        "CurrentPrice": 381.41,
+        "TargetPrice": 516.6547,
+        "5 Year EPS Growth": -0.2,
+        "Earnings Yield": 0.07257062818784853
+    },
+    {
+        "Symbol": "EQH",
+        "Ownershipcount": "4",
+        "CurrentPrice": 47.47,
+        "TargetPrice": 54.4,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.01934112646121148
+    },
+    {
+        "Symbol": "JHG",
+        "Ownershipcount": "1",
+        "CurrentPrice": 44.06,
+        "TargetPrice": 42.69167,
+        "5 Year EPS Growth": -0.696,
+        "Earnings Yield": 0.057317625736293606
+    },
+    {
+        "Symbol": "FOUR",
+        "Ownershipcount": "2",
+        "CurrentPrice": 101.85,
+        "TargetPrice": 116.85714,
+        "5 Year EPS Growth": 0.346,
+        "Earnings Yield": 0.017905102954341987
+    },
+    {
+        "Symbol": "JD",
+        "Ownershipcount": "5",
+        "CurrentPrice": 37.29,
+        "TargetPrice": 49.028404,
+        "5 Year EPS Growth": 0.966,
+        "Earnings Yield": 0.08134347940173184
+    },
+    {
+        "Symbol": "FI",
+        "Ownershipcount": "10",
+        "CurrentPrice": 204.66,
+        "TargetPrice": 226.79118,
+        "5 Year EPS Growth": -0.372,
+        "Earnings Yield": 0.025286795216011716
+    },
+    {
+        "Symbol": "PM",
+        "Ownershipcount": "8",
+        "CurrentPrice": 126.62,
+        "TargetPrice": 136.15614,
+        "5 Year EPS Growth": 0.493,
+        "Earnings Yield": 0.04968503937007874
+    },
+    {
+        "Symbol": "ORCL",
+        "Ownershipcount": "12",
+        "CurrentPrice": 173.39,
+        "TargetPrice": 196.11166,
+        "5 Year EPS Growth": 0.198,
+        "Earnings Yield": 0.023328770248688114
+    },
+    {
+        "Symbol": "ICE",
+        "Ownershipcount": "7",
+        "CurrentPrice": 155.58,
+        "TargetPrice": 183.6875,
+        "5 Year EPS Growth": 0.188,
+        "Earnings Yield": 0.02695624401149792
+    },
+    {
+        "Symbol": "IAC",
+        "Ownershipcount": "6",
+        "CurrentPrice": 44.47,
+        "TargetPrice": 68.33333,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.008434256055363321
+    },
+    {
+        "Symbol": "DHR",
+        "Ownershipcount": "8",
+        "CurrentPrice": 234.89,
+        "TargetPrice": 289.37918,
+        "5 Year EPS Growth": -0.26,
+        "Earnings Yield": 0.022643923240938165
+    },
+    {
+        "Symbol": "HCC",
+        "Ownershipcount": "2",
+        "CurrentPrice": 61.59,
+        "TargetPrice": 77.0,
+        "5 Year EPS Growth": -0.513,
+        "Earnings Yield": 0.11404335532516494
+    },
+    {
+        "Symbol": "WTW",
+        "Ownershipcount": "6",
+        "CurrentPrice": 311.39,
+        "TargetPrice": 353.3889,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.02341343191620456
+    },
+    {
+        "Symbol": "LBTYK",
+        "Ownershipcount": "1",
+        "CurrentPrice": 13.7,
+        "TargetPrice": "",
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.720662347012239
+    },
+    {
+        "Symbol": "TRMD",
+        "Ownershipcount": "1",
+        "CurrentPrice": 19.45,
+        "TargetPrice": 34.0,
+        "5 Year EPS Growth": -0.049,
+        "Earnings Yield": 0.41173333333333334
+    },
+    {
+        "Symbol": "GTLS",
+        "Ownershipcount": "1",
+        "CurrentPrice": 197.87,
+        "TargetPrice": 195.5,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": 0.017790356817952085
+    },
+    {
+        "Symbol": "CRH",
+        "Ownershipcount": "6",
+        "CurrentPrice": 97.92,
+        "TargetPrice": 113.63043,
+        "5 Year EPS Growth": 0.094,
+        "Earnings Yield": 0.050634195839675294
+    },
+    {
+        "Symbol": "GPI",
+        "Ownershipcount": "1",
+        "CurrentPrice": 427.1,
+        "TargetPrice": 444.1111,
+        "5 Year EPS Growth": -0.254,
+        "Earnings Yield": 0.08832941176470588
+    },
+    {
+        "Symbol": "SCHW",
+        "Ownershipcount": "12",
+        "CurrentPrice": 79.54,
+        "TargetPrice": 82.5,
+        "5 Year EPS Growth": 0.271,
+        "Earnings Yield": 0.030899215449607727
+    },
+    {
+        "Symbol": "KMX",
+        "Ownershipcount": "9",
+        "CurrentPrice": 86.26,
+        "TargetPrice": 84.82688,
+        "5 Year EPS Growth": 0.135,
+        "Earnings Yield": 0.030652224014749943
+    },
+    {
+        "Symbol": "WCC",
+        "Ownershipcount": "7",
+        "CurrentPrice": 190.79,
+        "TargetPrice": 222.42667,
+        "5 Year EPS Growth": -0.093,
+        "Earnings Yield": 0.06483521050662899
+    },
+    {
+        "Symbol": "NVDA",
+        "Ownershipcount": "8",
+        "CurrentPrice": 134.25,
+        "TargetPrice": 171.77962,
+        "5 Year EPS Growth": 1.68,
+        "Earnings Yield": 0.018494247852046015
+    },
+    {
+        "Symbol": "CNI",
+        "Ownershipcount": "5",
+        "CurrentPrice": 103.83,
+        "TargetPrice": 122.3907,
+        "5 Year EPS Growth": 0.018,
+        "Earnings Yield": 0.05674978503869304
+    },
+    {
+        "Symbol": "WIX",
+        "Ownershipcount": "3",
+        "CurrentPrice": 219.61,
+        "TargetPrice": 230.2438,
+        "5 Year EPS Growth": 0.214,
+        "Earnings Yield": 0.0071269487750556795
+    },
+    {
+        "Symbol": "PEP",
+        "Ownershipcount": "9",
+        "CurrentPrice": 157.97,
+        "TargetPrice": 181.12619,
+        "5 Year EPS Growth": -0.049,
+        "Earnings Yield": 0.04266834487098804
+    },
+    {
+        "Symbol": "APTV",
+        "Ownershipcount": "2",
+        "CurrentPrice": 57.97,
+        "TargetPrice": 75.79273,
+        "5 Year EPS Growth": -0.743,
+        "Earnings Yield": 0.15339938503587291
+    },
+    {
+        "Symbol": "APO",
+        "Ownershipcount": "5",
+        "CurrentPrice": 176.43,
+        "TargetPrice": 177.94118,
+        "5 Year EPS Growth": 0.174,
+        "Earnings Yield": 0.0536817640723315
+    },
+    {
+        "Symbol": "HLT",
+        "Ownershipcount": "4",
+        "CurrentPrice": 252.76,
+        "TargetPrice": 238.95692,
+        "5 Year EPS Growth": -0.042,
+        "Earnings Yield": 0.0182883939038687
+    },
+    {
+        "Symbol": "FLUT",
+        "Ownershipcount": "7",
+        "CurrentPrice": 277.71,
+        "TargetPrice": 299.35,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.01906455628667971
+    },
+    {
+        "Symbol": "GM",
+        "Ownershipcount": "6",
+        "CurrentPrice": 52.53,
+        "TargetPrice": 59.51462,
+        "5 Year EPS Growth": 0.218,
+        "Earnings Yield": 0.1791586998087954
+    },
+    {
+        "Symbol": "STLA",
+        "Ownershipcount": "3",
+        "CurrentPrice": 13.95,
+        "TargetPrice": 18.72714,
+        "5 Year EPS Growth": -0.455,
+        "Earnings Yield": 0.33260393873085337
+    },
+    {
+        "Symbol": "JPM",
+        "Ownershipcount": "13",
+        "CurrentPrice": 239.94,
+        "TargetPrice": 246.356,
+        "5 Year EPS Growth": 0.009,
+        "Earnings Yield": 0.074524903738666
+    },
+    {
+        "Symbol": "KKR",
+        "Ownershipcount": "6",
+        "CurrentPrice": 154.34,
+        "TargetPrice": 164.7021,
+        "5 Year EPS Growth": -0.61,
+        "Earnings Yield": 0.02073836276083467
+    },
+    {
+        "Symbol": "BKNG",
+        "Ownershipcount": "7",
+        "CurrentPrice": 5227.61,
+        "TargetPrice": 5149.176,
+        "5 Year EPS Growth": 0.065,
+        "Earnings Yield": 0.02807780706898744
+    },
+    {
+        "Symbol": "CPNG",
+        "Ownershipcount": "6",
+        "CurrentPrice": 23.89,
+        "TargetPrice": 29.03333,
+        "5 Year EPS Growth": -0.22,
+        "Earnings Yield": 0.023437499999999997
+    },
+    {
+        "Symbol": "ORLA",
+        "Ownershipcount": "2",
+        "CurrentPrice": 5.58,
+        "TargetPrice": "",
+        "5 Year EPS Growth": 2.507,
+        "Earnings Yield": ""
+    },
+    {
+        "Symbol": "ADI",
+        "Ownershipcount": "7",
+        "CurrentPrice": 216.61,
+        "TargetPrice": 251.7618,
+        "5 Year EPS Growth": -0.546,
+        "Earnings Yield": 0.01501929083226162
+    },
+    {
+        "Symbol": "DG",
+        "Ownershipcount": "4",
+        "CurrentPrice": 76.94,
+        "TargetPrice": 90.0075,
+        "5 Year EPS Growth": -0.202,
+        "Earnings Yield": 0.0772762050497322
+    },
+    {
+        "Symbol": "CBRE",
+        "Ownershipcount": "6",
+        "CurrentPrice": 137.3,
+        "TargetPrice": 141.72726,
+        "5 Year EPS Growth": 0.197,
+        "Earnings Yield": 0.022120409478130144
+    },
+    {
+        "Symbol": "USB",
+        "Ownershipcount": "7",
+        "CurrentPrice": 51.03,
+        "TargetPrice": 56.65286,
+        "5 Year EPS Growth": 0.127,
+        "Earnings Yield": 0.06360078277886497
+    },
+    {
+        "Symbol": "PDD",
+        "Ownershipcount": "4",
+        "CurrentPrice": 102.27,
+        "TargetPrice": 149.87898,
+        "5 Year EPS Growth": 1.4,
+        "Earnings Yield": 0.09659850945920122
+    },
+    {
+        "Symbol": "NSIT",
+        "Ownershipcount": "2",
+        "CurrentPrice": 158.94,
+        "TargetPrice": 200.8,
+        "5 Year EPS Growth": -0.062,
+        "Earnings Yield": 0.04877899128727452
+    },
+    {
+        "Symbol": "NKE",
+        "Ownershipcount": "8",
+        "CurrentPrice": 77.25,
+        "TargetPrice": 90.45029,
+        "5 Year EPS Growth": -0.255,
+        "Earnings Yield": 0.044766546947152396
+    },
+    {
+        "Symbol": "FDX",
+        "Ownershipcount": "9",
+        "CurrentPrice": 283.42,
+        "TargetPrice": 310.01553,
+        "5 Year EPS Growth": -0.133,
+        "Earnings Yield": 0.05703408650287285
+    },
+    {
+        "Symbol": "ACN",
+        "Ownershipcount": "7",
+        "CurrentPrice": 358.68,
+        "TargetPrice": 385.11417,
+        "5 Year EPS Growth": 0.236,
+        "Earnings Yield": 0.0317618968293631
+    },
+    {
+        "Symbol": "SE",
+        "Ownershipcount": "4",
+        "CurrentPrice": 116.47,
+        "TargetPrice": 121.23939,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": 0.0012788814050643702
+    },
+    {
+        "Symbol": "ET",
+        "Ownershipcount": "4",
+        "CurrentPrice": 19.04,
+        "TargetPrice": 20.79059,
+        "5 Year EPS Growth": 1.18,
+        "Earnings Yield": 0.07079646017699115
+    },
+    {
+        "Symbol": "VFC",
+        "Ownershipcount": "4",
+        "CurrentPrice": 21.08,
+        "TargetPrice": 21.9065,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.04900095147478592
+    },
+    {
+        "Symbol": "BIDU",
+        "Ownershipcount": "3",
+        "CurrentPrice": 90.82,
+        "TargetPrice": 111.167305,
+        "5 Year EPS Growth": 0.062,
+        "Earnings Yield": 0.08370239149689991
+    },
+    {
+        "Symbol": "CMCSA",
+        "Ownershipcount": "11",
+        "CurrentPrice": 39.92,
+        "TargetPrice": 48.05964,
+        "5 Year EPS Growth": -0.041,
+        "Earnings Yield": 0.09219681908548708
+    },
+    {
+        "Symbol": "FIS",
+        "Ownershipcount": "7",
+        "CurrentPrice": 84.1,
+        "TargetPrice": 95.51923,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": 0.011423860558238135
+    },
+    {
+        "Symbol": "SOLV",
+        "Ownershipcount": "5",
+        "CurrentPrice": 69.56,
+        "TargetPrice": 73.765,
+        "5 Year EPS Growth": -0.737,
+        "Earnings Yield": 0.005427796029138694
+    },
+    {
+        "Symbol": "EVH",
+        "Ownershipcount": "1",
+        "CurrentPrice": 11.38,
+        "TargetPrice": 25.515,
+        "5 Year EPS Growth": "",
+        "Earnings Yield": -0.08070175438596491
+    },
+    {
+        "Symbol": "ADBE",
+        "Ownershipcount": "9",
+        "CurrentPrice": 465.69,
+        "TargetPrice": 587.9397,
+        "5 Year EPS Growth": 0.233,
+        "Earnings Yield": 0.025999199376356318
+    },
+    {
+        "Symbol": "GS",
+        "Ownershipcount": "9",
+        "CurrentPrice": 585.48,
+        "TargetPrice": 601.8421,
+        "5 Year EPS Growth": 0.536,
+        "Earnings Yield": 0.05769003228478221
+    },
+    {
+        "Symbol": "SBUX",
+        "Ownershipcount": "9",
+        "CurrentPrice": 97.42,
+        "TargetPrice": 103.304,
+        "5 Year EPS Growth": -0.246,
+        "Earnings Yield": 0.0338376610100184
+    },
+    {
+        "Symbol": "JNJ",
+        "Ownershipcount": "11",
+        "CurrentPrice": 146.62,
+        "TargetPrice": 174.28,
+        "5 Year EPS Growth": -0.891,
+        "Earnings Yield": 0.04143873085339168
+    },
+    {
+        "Symbol": "SGOV",
+        "Ownershipcount": "2",
+        "CurrentPrice": 100.5,
+        "TargetPrice": "",
+        "5 Year EPS Growth": "",
+        "Earnings Yield": ""
+    }
+]

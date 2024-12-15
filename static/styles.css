@@ -1,0 +1,183 @@
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    cursor: pointer;
+}
+
+table thead {
+    background-color: #444;
+    color: #fff;
+}
+
+table tr {
+    border-bottom: 1px solid #555;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #333;
+}
+
+table tr:hover {
+    background-color: #555;
+}
+
+table th {
+    border-bottom: 2px solid #555;
+}
+
+#loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+#data-container {
+    display: none;
+}
+
+/* Estilo de enlaces para Symbol */
+.symbol-link {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.symbol-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilo de las etiquetas */
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.tag-gray {
+    background-color: #6c757d;
+}
+
+/* Mostrar decimales completos al hacer hover */
+.decimal-hover {
+    position: relative;
+}
+
+.decimal-hover span {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.decimal-hover:hover span {
+    display: block;
+}
+
+/* Mantener el modal centrado y habilitar el scroll interno */
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    overflow: hidden;
+    /* Evita que el modal desborde el viewport */
+}
+
+#modal-content {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90%;
+    /* Limita la altura del contenido */
+    overflow-y: auto;
+    /* Habilita el scroll interno */
+    color: #fff;
+    position: relative;
+}
+
+/* Botón para cerrar el modal */
+#modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#modal-content .close:hover {
+    color: #ccc;
+}
+
+/* Espaciado entre tablas */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Contenedor de tablas */
+.table-container table {
+    margin-bottom: 10px;
+}
+
+/* Estilo para las etiquetas */
+.tag-red {
+    background-color: #dc3545;
+    /* Rojo */
+    color: #fff;
+}
+
+.tag-green {
+    background-color: #28a745;
+    /* Verde */
+    color: #fff;
+}
+
+.tag-black {
+    background-color: #6c757d;
+    /* Negro */
+    color: #fff;
+}
+
+/* Estilo para las filas condicionales */
+.row-danger td {
+    color: #dc3545;
+    /* Rojo */
+}
+
+.row-success td {
+    color: #28a745;
+    /* Verde */
+}

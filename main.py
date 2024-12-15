@@ -7,8 +7,17 @@ import pandas as pd
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 from service import fetch_finviz_data, get_dataroma_data
+from fastapi.templating import Jinja2Templates
+from starlette.requests import Request
 # Inicializar la aplicación
 app = FastAPI()
+
+
+# Montar la carpeta "static" para archivos estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Configurar la carpeta de plantillas
+templates = Jinja2Templates(directory="templates")
 
 # Permitir solicitudes de cualquier origen (o especificar los orígenes permitidos)
 app.add_middleware(
@@ -135,16 +144,8 @@ def get_full_dataframe():
     global dataframe
     return dataframe.to_dict(orient="records")
 
-# Endpoint para servir un archivo HTML
-@app.get("/home", response_class=HTMLResponse)
-def home_page():
-    with open("static/index.html", "r") as file:
-        html_content = file.read()
-    return html_content
+# Endpoint para servir el HTML
+@app.get("/", response_class=HTMLResponse)
+def home_page(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-# Endpoint para servir un archivo HTML
-@app.get("/search", response_class=HTMLResponse)
-def search_page():
-    with open("static/search.html", "r") as file:
-        html_content = file.read()
-    return html_content

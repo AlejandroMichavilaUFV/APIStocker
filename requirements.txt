@@ -6,3 +6,4 @@ beautifulsoup4
 requests
 yfinance
 lxml
+Jinja2
